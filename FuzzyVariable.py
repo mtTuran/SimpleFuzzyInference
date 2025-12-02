@@ -1,10 +1,13 @@
 class FuzzyVariable:
-    def __init__(self, var_name):
+    def __init__(self, var_name, x_range):
         self.var_name = var_name
+        self.x_range = x_range
         self.membership_sets = []
-        self.memberships = dict()
 
     def add_trapezoid_membership_set(self, set_name, set_min_x, set_max_x, set_flatness_start_x, set_flatness_end_x):
+        if set_min_x < self.x_range[0] or set_max_x > self.x_range[1]:
+            print(f"The provided set is out of bounds for the pre-defined universe of discourse: {self.x_range}")
+            return  
         def _membership(crisp_input):
             if crisp_input < set_min_x or crisp_input > set_max_x:
                 return 0
@@ -19,6 +22,9 @@ class FuzzyVariable:
         self.membership_sets.append([set_name, _membership])
     
     def add_triangular_membership_set(self, set_name, set_min_x, set_peak_x, set_max_x):
+        if set_min_x < self.x_range[0] or set_max_x > self.x_range[1]:
+            print(f"The provided set is out of bounds for the pre-defined universe of discourse: {self.x_range}")
+            return    
         def _membership(crisp_input):
             if crisp_input < set_min_x or crisp_input > set_max_x:
                 return 0
@@ -32,9 +38,12 @@ class FuzzyVariable:
                 return 1 
         self.membership_sets.append([set_name, _membership])
 
-    def get_memberships(self):
-        if len(self.memberships) == 0:
-            print("No fuzzified input available!")
-            return [-1]
-        return self.memberships
+    def compute_membership(self, crisp_input):
+        crisp_to_membership = dict()
+        if len(self.membership_sets) == 0:
+            print("No membership set is defined!")
+            return crisp_to_membership
+        for set_name, mem_func in self.membership_sets:
+            crisp_to_membership[set_name] = mem_func(crisp_input)
+        return crisp_to_membership
     
