@@ -1,10 +1,17 @@
 from FuzzyVariable import FuzzyVariable
 
 class FuzzyRule:
-    def __init__(self, output_variable_name, aggregation_set_name, conditions=dict()):
+    def __init__(self, output_variable_name, aggregation_set_name, priority=1, conditions=dict()):
         self.output_variable_name = output_variable_name
         self.aggregation_set_name = aggregation_set_name
+        self.priority = priority
         self.conditions = conditions
+
+    def set_priority(self, priority):
+        self.priority = priority
+
+    def get_number_of_conditions(self):
+        return len(self.conditions.keys())
 
     def get_aggregation_information(self):
         return self.output_variable_name, self.aggregation_set_name
