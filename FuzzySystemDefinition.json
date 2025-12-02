@@ -1,0 +1,816 @@
+{
+    "InputSets": [
+        {
+            "var_name": "market_value",
+            "x_range": [0, 1000],
+            "sets": [
+                {
+                    "set_name": "low",
+                    "set_type": "trapezoid",
+                    "set_min_x": 0,
+                    "set_max_x": 100,
+                    "set_flatness_start_x": 0,
+                    "set_flatness_end_x": 75 
+                },
+                {
+                    "set_name": "medium",
+                    "set_type": "trapezoid",
+                    "set_min_x": 50,
+                    "set_max_x": 250,
+                    "set_flatness_start_x": 100,
+                    "set_flatness_end_x": 200 
+                },
+                {
+                    "set_name": "high",
+                    "set_type": "trapezoid",
+                    "set_min_x": 200,
+                    "set_max_x": 850,
+                    "set_flatness_start_x": 300,
+                    "set_flatness_end_x": 650 
+                },
+                {
+                    "set_name": "very_high",
+                    "set_type": "trapezoid",
+                    "set_min_x": 650,
+                    "set_max_x": 1000,
+                    "set_flatness_start_x": 850,
+                    "set_flatness_end_x": 1000 
+                }
+            ]
+        },
+        {
+            "var_name": "location",
+            "x_range": [0, 10],
+            "sets": [
+                {
+                    "set_name": "bad",
+                    "set_type": "trapezoid",
+                    "set_min_x": 0,
+                    "set_max_x": 4,
+                    "set_flatness_start_x": 0,
+                    "set_flatness_end_x": 1.6 
+                },
+                {
+                    "set_name": "fair",
+                    "set_type": "trapezoid",
+                    "set_min_x": 2.5,
+                    "set_max_x": 8.5,
+                    "set_flatness_start_x": 5,
+                    "set_flatness_end_x": 6 
+                },
+                {
+                    "set_name": "excellent",
+                    "set_type": "trapezoid",
+                    "set_min_x": 6,
+                    "set_max_x": 10,
+                    "set_flatness_start_x": 8.5,
+                    "set_flatness_end_x": 10 
+                }
+            ]
+        },
+        {
+            "var_name": "assets",
+            "x_range": [0, 1000],
+            "sets": [
+                {
+                    "set_name": "low",
+                    "set_type": "triangular",
+                    "set_min_x": 0,
+                    "set_max_x": 150,
+                    "set_peak_x": 0
+                },
+                {
+                    "set_name": "medium",
+                    "set_type": "trapezoid",
+                    "set_min_x": 50,
+                    "set_max_x": 650,
+                    "set_flatness_start_x": 250,
+                    "set_flatness_end_x": 450 
+                },
+                {
+                    "set_name": "high",
+                    "set_type": "trapezoid",
+                    "set_min_x": 500,
+                    "set_max_x": 1000,
+                    "set_flatness_start_x": 680,
+                    "set_flatness_end_x": 1000 
+                }
+            ]
+        },
+        {
+            "var_name": "salary",
+            "x_range": [0, 100],
+            "sets": [
+                {
+                    "set_name": "low",
+                    "set_type": "trapezoid",
+                    "set_min_x": 0,
+                    "set_max_x": 25,
+                    "set_flatness_start_x": 0,
+                    "set_flatness_end_x": 10 
+                },
+                {
+                    "set_name": "medium",
+                    "set_type": "triangular",
+                    "set_min_x": 15,
+                    "set_max_x": 55,
+                    "set_peak_x": 35
+                },
+                {
+                    "set_name": "high",
+                    "set_type": "triangular",
+                    "set_min_x": 40,
+                    "set_max_x": 80,
+                    "set_peak_x": 60
+                },
+                {
+                    "set_name": "very_high",
+                    "set_type": "trapezoid",
+                    "set_min_x": 60,
+                    "set_max_x": 100,
+                    "set_flatness_start_x": 80,
+                    "set_flatness_end_x": 100 
+                }
+            ]
+        },
+        {
+            "var_name": "interest_rate",
+            "x_range": [0, 10],
+            "sets": [
+                {
+                    "set_name": "low",
+                    "set_type": "trapezoid",
+                    "set_min_x": 0,
+                    "set_max_x": 5,
+                    "set_flatness_start_x": 0,
+                    "set_flatness_end_x": 2 
+                },
+                {
+                    "set_name": "medium",
+                    "set_type": "trapezoid",
+                    "set_min_x": 2,
+                    "set_max_x": 8,
+                    "set_flatness_start_x": 4,
+                    "set_flatness_end_x": 6 
+                },
+                {
+                    "set_name": "high",
+                    "set_type": "trapezoid",
+                    "set_min_x": 6,
+                    "set_max_x": 10,
+                    "set_flatness_start_x": 8.5,
+                    "set_flatness_end_x": 10 
+                }
+            ]
+        }
+    ],
+    
+    "OutputSets": [
+        {
+            "var_name": "eval_house",
+            "x_range": [0, 10],
+            "sets": [
+                {
+                    "set_name": "very_low",
+                    "set_type": "triangular",
+                    "set_min_x": 0,
+                    "set_max_x": 3,
+                    "set_peak_x": 0
+                },
+                {
+                    "set_name": "low",
+                    "set_type": "triangular",
+                    "set_min_x": 0,
+                    "set_max_x": 6,
+                    "set_peak_x": 3
+                },
+                {
+                    "set_name": "medium",
+                    "set_type": "triangular",
+                    "set_min_x": 2,
+                    "set_max_x": 8,
+                    "set_peak_x": 5
+                },
+                {
+                    "set_name": "high",
+                    "set_type": "triangular",
+                    "set_min_x": 4,
+                    "set_max_x": 10,
+                    "set_peak_x": 7
+                },
+                {
+                    "set_name": "very_high",
+                    "set_type": "triangular",
+                    "set_min_x": 7,
+                    "set_max_x": 10,
+                    "set_peak_x": 10
+                }
+            ]
+        },
+        {
+            "var_name": "eval_applicant",
+            "x_range": [0, 10],
+            "sets": [
+                {
+                    "set_name": "low",
+                    "set_type": "trapezoid",
+                    "set_min_x": 0,
+                    "set_max_x": 4,
+                    "set_flatness_start_x": 0,
+                    "set_flatness_end_x": 2 
+                },
+                {
+                    "set_name": "medium",
+                    "set_type": "triangular",
+                    "set_min_x": 2,
+                    "set_max_x": 8,
+                    "set_peak_x": 5
+                },
+                {
+                    "set_name": "high",
+                    "set_type": "trapezoid",
+                    "set_min_x": 6,
+                    "set_max_x": 10,
+                    "set_flatness_start_x": 8,
+                    "set_flatness_end_x": 10 
+                }
+            ]
+        },
+        {
+            "var_name": "loan_amount",
+            "x_range": [0, 500],
+            "sets": [
+                {
+                    "set_name": "very_low",
+                    "set_type": "triangular",
+                    "set_min_x": 0,
+                    "set_max_x": 125,
+                    "set_peak_x": 0
+                },
+                {
+                    "set_name": "low",
+                    "set_type": "triangular",
+                    "set_min_x": 0,
+                    "set_max_x": 250,
+                    "set_peak_x": 125
+                },
+                {
+                    "set_name": "medium",
+                    "set_type": "triangular",
+                    "set_min_x": 125,
+                    "set_max_x": 375,
+                    "set_peak_x": 250
+                },
+                {
+                    "set_name": "high",
+                    "set_type": "triangular",
+                    "set_min_x": 250,
+                    "set_max_x": 500,
+                    "set_peak_x": 375
+                },
+                {
+                    "set_name": "very_high",
+                    "set_type": "triangular",
+                    "set_min_x": 375,
+                    "set_max_x": 500,
+                    "set_peak_x": 500
+                }
+            ]
+        }
+    ],
+
+    "HouseRules": {
+        "output_variable_name": "eval_house",
+        "Rules": [
+            {
+                "aggregation_set_name": "low",
+                "conditions": [
+                    {
+                        "input_variable_name": "market_value",
+                        "monotonic_selection_set_name": "low"
+                    }
+                ]
+            },
+            {
+                "aggregation_set_name": "low",
+                "conditions": [
+                    {
+                       "input_variable_name": "location",
+                        "monotonic_selection_set_name": "bad" 
+                    }
+                ]
+            },
+            {
+                "aggregation_set_name": "very_low",
+                "conditions": [
+                    {
+                       "input_variable_name": "location",
+                        "monotonic_selection_set_name": "bad" 
+                    },
+                    {
+                        "input_variable_name": "market_value",
+                        "monotonic_selection_set_name": "low"
+                    }
+                ]
+            },
+            {
+                "aggregation_set_name": "low",
+                "conditions": [
+                    {
+                       "input_variable_name": "location",
+                        "monotonic_selection_set_name": "bad" 
+                    },
+                    {
+                        "input_variable_name": "market_value",
+                        "monotonic_selection_set_name": "medium"
+                    }
+                ]
+            },
+            {
+                "aggregation_set_name": "medium",
+                "conditions": [
+                    {
+                       "input_variable_name": "location",
+                        "monotonic_selection_set_name": "bad" 
+                    },
+                    {
+                        "input_variable_name": "market_value",
+                        "monotonic_selection_set_name": "high"
+                    }
+                ]
+            },
+            {
+                "aggregation_set_name": "high",
+                "conditions": [
+                    {
+                       "input_variable_name": "location",
+                        "monotonic_selection_set_name": "bad" 
+                    },
+                    {
+                        "input_variable_name": "market_value",
+                        "monotonic_selection_set_name": "very_high"
+                    }
+                ]
+            },
+            {
+                "aggregation_set_name": "low",
+                "conditions": [
+                    {
+                       "input_variable_name": "location",
+                        "monotonic_selection_set_name": "fair" 
+                    },
+                    {
+                        "input_variable_name": "market_value",
+                        "monotonic_selection_set_name": "low"
+                    }
+                ]
+            },
+            {
+                "aggregation_set_name": "medium",
+                "conditions": [
+                    {
+                       "input_variable_name": "location",
+                        "monotonic_selection_set_name": "fair" 
+                    },
+                    {
+                        "input_variable_name": "market_value",
+                        "monotonic_selection_set_name": "medium"
+                    }
+                ]
+            },
+            {
+                "aggregation_set_name": "high",
+                "conditions": [
+                    {
+                       "input_variable_name": "location",
+                        "monotonic_selection_set_name": "medium" 
+                    },
+                    {
+                        "input_variable_name": "market_value",
+                        "monotonic_selection_set_name": "high"
+                    }
+                ]
+            },
+            {
+                "aggregation_set_name": "very_high",
+                "conditions": [
+                    {
+                       "input_variable_name": "location",
+                        "monotonic_selection_set_name": "fair" 
+                    },
+                    {
+                        "input_variable_name": "market_value",
+                        "monotonic_selection_set_name": "very_high"
+                    }
+                ]
+            },
+            {
+                "aggregation_set_name": "medium",
+                "conditions": [
+                    {
+                       "input_variable_name": "location",
+                        "monotonic_selection_set_name": "excellent" 
+                    },
+                    {
+                        "input_variable_name": "market_value",
+                        "monotonic_selection_set_name": "low"
+                    }
+                ]
+            },
+            {
+                "aggregation_set_name": "high",
+                "conditions": [
+                    {
+                       "input_variable_name": "location",
+                        "monotonic_selection_set_name": "excellent" 
+                    },
+                    {
+                        "input_variable_name": "market_value",
+                        "monotonic_selection_set_name": "medium"
+                    }
+                ]
+            },
+            {
+                "aggregation_set_name": "very_high",
+                "conditions": [
+                    {
+                       "input_variable_name": "location",
+                        "monotonic_selection_set_name": "excellent" 
+                    },
+                    {
+                        "input_variable_name": "market_value",
+                        "monotonic_selection_set_name": "high"
+                    }
+                ]
+            },
+            {
+                "aggregation_set_name": "very_high",
+                "conditions": [
+                    {
+                       "input_variable_name": "location",
+                        "monotonic_selection_set_name": "excellent" 
+                    },
+                    {
+                        "input_variable_name": "market_value",
+                        "monotonic_selection_set_name": "very_high"
+                    }
+                ]
+            }
+        ]
+    },
+
+    "ApplicationRules": {
+        "output_variable_name": "eval_applicant",
+        "Rules": [
+            {
+                "aggregation_set_name": "low",
+                "conditions": [
+                    {
+                        "input_variable_name": "assets",
+                        "monotonic_selection_set_name": "low"
+                    },
+                    {
+                        "input_variable_name": "salary",
+                        "monotonic_selection_set_name": "low"
+                    }
+                ]
+            },
+            {
+                "aggregation_set_name": "low",
+                "conditions": [
+                    {
+                        "input_variable_name": "assets",
+                        "monotonic_selection_set_name": "low"
+                    },
+                    {
+                        "input_variable_name": "salary",
+                        "monotonic_selection_set_name": "medium"
+                    }
+                ]
+            },
+            {
+                "aggregation_set_name": "medium",
+                "conditions": [
+                    {
+                        "input_variable_name": "assets",
+                        "monotonic_selection_set_name": "low"
+                    },
+                    {
+                        "input_variable_name": "salary",
+                        "monotonic_selection_set_name": "high"
+                    }
+                ]
+            },
+            {
+                "aggregation_set_name": "very_high",
+                "conditions": [
+                    {
+                        "input_variable_name": "assets",
+                        "monotonic_selection_set_name": "low"
+                    },
+                    {
+                        "input_variable_name": "salary",
+                        "monotonic_selection_set_name": "very_high"
+                    }
+                ]
+            },
+            {
+                "aggregation_set_name": "low",
+                "conditions": [
+                    {
+                        "input_variable_name": "assets",
+                        "monotonic_selection_set_name": "medium"
+                    },
+                    {
+                        "input_variable_name": "salary",
+                        "monotonic_selection_set_name": "low"
+                    }
+                ]
+            },
+            {
+                "aggregation_set_name": "medium",
+                "conditions": [
+                    {
+                        "input_variable_name": "assets",
+                        "monotonic_selection_set_name": "medium"
+                    },
+                    {
+                        "input_variable_name": "salary",
+                        "monotonic_selection_set_name": "medium"
+                    }
+                ]
+            },
+            {
+                "aggregation_set_name": "high",
+                "conditions": [
+                    {
+                        "input_variable_name": "assets",
+                        "monotonic_selection_set_name": "medium"
+                    },
+                    {
+                        "input_variable_name": "salary",
+                        "monotonic_selection_set_name": "high"
+                    }
+                ]
+            },
+            {
+                "aggregation_set_name": "high",
+                "conditions": [
+                    {
+                        "input_variable_name": "assets",
+                        "monotonic_selection_set_name": "medium"
+                    },
+                    {
+                        "input_variable_name": "salary",
+                        "monotonic_selection_set_name": "very_high"
+                    }
+                ]
+            },
+            {
+                "aggregation_set_name": "medium",
+                "conditions": [
+                    {
+                        "input_variable_name": "assets",
+                        "monotonic_selection_set_name": "high"
+                    },
+                    {
+                        "input_variable_name": "salary",
+                        "monotonic_selection_set_name": "low"
+                    }
+                ]
+            },
+            {
+                "aggregation_set_name": "medium",
+                "conditions": [
+                    {
+                        "input_variable_name": "assets",
+                        "monotonic_selection_set_name": "high"
+                    },
+                    {
+                        "input_variable_name": "salary",
+                        "monotonic_selection_set_name": "medium"
+                    }
+                ]
+            },
+            {
+                "aggregation_set_name": "high",
+                "conditions": [
+                    {
+                        "input_variable_name": "assets",
+                        "monotonic_selection_set_name": "high"
+                    },
+                    {
+                        "input_variable_name": "salary",
+                        "monotonic_selection_set_name": "high"
+                    }
+                ]
+            },
+            {
+                "aggregation_set_name": "high",
+                "conditions": [
+                    {
+                        "input_variable_name": "assets",
+                        "monotonic_selection_set_name": "high"
+                    },
+                    {
+                        "input_variable_name": "salary",
+                        "monotonic_selection_set_name": "very_high"
+                    }
+                ]
+            }
+        ]
+    },
+
+    "LoanRules": {
+        "output_variable_name": "loan_amount",
+        "Rules": [
+            {
+                "aggregation_set_name": "very_low",
+                "conditions": [
+                    {
+                        "input_variable_name": "salary",
+                        "monotonic_selection_set_name": "low"
+                    },
+                    {
+                        "input_variable_name": "interest_rate",
+                        "monotonic_selection_set_name": "medium"
+                    }
+                ]
+            },
+            {
+                "aggregation_set_name": "very_low",
+                "conditions": [
+                    {
+                        "input_variable_name": "salary",
+                        "monotonic_selection_set_name": "low"
+                    },
+                    {
+                        "input_variable_name": "interest_rate",
+                        "monotonic_selection_set_name": "high"
+                    }
+                ]
+            },
+            {
+                "aggregation_set_name": "low",
+                "conditions": [
+                    {
+                        "input_variable_name": "salary",
+                        "monotonic_selection_set_name": "medium"
+                    },
+                    {
+                        "input_variable_name": "interest_rate",
+                        "monotonic_selection_set_name": "high"
+                    }
+                ]
+            },
+            {
+                "aggregation_set_name": "very_low",
+                "conditions": [
+                    {
+                        "input_variable_name": "computed_eval_applicant",
+                        "monotonic_selection_set_name": "low"
+                    }
+                ]
+            },
+            {
+                "aggregation_set_name": "very_low",
+                "conditions": [
+                    {
+                        "input_variable_name": "computed_eval_house",
+                        "monotonic_selection_set_name": "very_low"
+                    }
+                ]
+            },
+            {
+                "aggregation_set_name": "low",
+                "conditions": [
+                    {
+                        "input_variable_name": "computed_eval_applicant",
+                        "monotonic_selection_set_name": "medium"
+                    },
+                    {
+                        "input_variable_name": "computed_eval_house",
+                        "monotonic_selection_set_name": "very_low"
+                    }
+                ]
+            },
+            {
+                "aggregation_set_name": "low",
+                "conditions": [
+                    {
+                        "input_variable_name": "computed_eval_applicant",
+                        "monotonic_selection_set_name": "medium"
+                    },
+                    {
+                        "input_variable_name": "computed_eval_house",
+                        "monotonic_selection_set_name": "low"
+                    }
+                ]
+            },
+            {
+                "aggregation_set_name": "medium",
+                "conditions": [
+                    {
+                        "input_variable_name": "computed_eval_applicant",
+                        "monotonic_selection_set_name": "medium"
+                    },
+                    {
+                        "input_variable_name": "computed_eval_house",
+                        "monotonic_selection_set_name": "medium"
+                    }
+                ]
+            },
+            {
+                "aggregation_set_name": "high",
+                "conditions": [
+                    {
+                        "input_variable_name": "computed_eval_applicant",
+                        "monotonic_selection_set_name": "medium"
+                    },
+                    {
+                        "input_variable_name": "computed_eval_house",
+                        "monotonic_selection_set_name": "high"
+                    }
+                ]
+            },
+            {
+                "aggregation_set_name": "high",
+                "conditions": [
+                    {
+                        "input_variable_name": "computed_eval_applicant",
+                        "monotonic_selection_set_name": "medium"
+                    },
+                    {
+                        "input_variable_name": "computed_eval_house",
+                        "monotonic_selection_set_name": "very_high"
+                    }
+                ]
+            },
+            {
+                "aggregation_set_name": "low",
+                "conditions": [
+                    {
+                        "input_variable_name": "computed_eval_applicant",
+                        "monotonic_selection_set_name": "high"
+                    },
+                    {
+                        "input_variable_name": "computed_eval_house",
+                        "monotonic_selection_set_name": "very_low"
+                    }
+                ]
+            },
+            {
+                "aggregation_set_name": "medium",
+                "conditions": [
+                    {
+                        "input_variable_name": "computed_eval_applicant",
+                        "monotonic_selection_set_name": "high"
+                    },
+                    {
+                        "input_variable_name": "computed_eval_house",
+                        "monotonic_selection_set_name": "low"
+                    }
+                ]
+            },
+            {
+                "aggregation_set_name": "high",
+                "conditions": [
+                    {
+                        "input_variable_name": "computed_eval_applicant",
+                        "monotonic_selection_set_name": "high"
+                    },
+                    {
+                        "input_variable_name": "computed_eval_house",
+                        "monotonic_selection_set_name": "medium"
+                    }
+                ]
+            },
+            {
+                "aggregation_set_name": "high",
+                "conditions": [
+                    {
+                        "input_variable_name": "computed_eval_applicant",
+                        "monotonic_selection_set_name": "high"
+                    },
+                    {
+                        "input_variable_name": "computed_eval_house",
+                        "monotonic_selection_set_name": "high"
+                    }
+                ]
+            },
+            {
+                "aggregation_set_name": "very_high",
+                "conditions": [
+                    {
+                        "input_variable_name": "computed_eval_applicant",
+                        "monotonic_selection_set_name": "high"
+                    },
+                    {
+                        "input_variable_name": "computed_eval_house",
+                        "monotonic_selection_set_name": "very_high"
+                    }
+                ]
+            }
+        ]
+    }
+}
