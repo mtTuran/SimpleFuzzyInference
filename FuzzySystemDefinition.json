@@ -664,6 +664,7 @@
                 ]
             },
             {
+                "priority": 3,
                 "aggregation_set_name": "very_low",
                 "conditions": [
                     {
@@ -673,6 +674,7 @@
                 ]
             },
             {
+                "priority": 3,
                 "aggregation_set_name": "very_low",
                 "conditions": [
                     {
@@ -682,6 +684,7 @@
                 ]
             },
             {
+                "priority": 3,
                 "aggregation_set_name": "low",
                 "conditions": [
                     {
@@ -695,6 +698,7 @@
                 ]
             },
             {
+                "priority": 3,
                 "aggregation_set_name": "low",
                 "conditions": [
                     {
@@ -708,6 +712,7 @@
                 ]
             },
             {
+                "priority": 3,
                 "aggregation_set_name": "medium",
                 "conditions": [
                     {
@@ -721,6 +726,7 @@
                 ]
             },
             {
+                "priority": 3,
                 "aggregation_set_name": "high",
                 "conditions": [
                     {
@@ -734,6 +740,7 @@
                 ]
             },
             {
+                "priority": 3,
                 "aggregation_set_name": "high",
                 "conditions": [
                     {
@@ -747,6 +754,7 @@
                 ]
             },
             {
+                "priority": 3,
                 "aggregation_set_name": "low",
                 "conditions": [
                     {
@@ -760,6 +768,7 @@
                 ]
             },
             {
+                "priority": 3,
                 "aggregation_set_name": "medium",
                 "conditions": [
                     {
@@ -773,6 +782,7 @@
                 ]
             },
             {
+                "priority": 3,
                 "aggregation_set_name": "high",
                 "conditions": [
                     {
@@ -786,6 +796,7 @@
                 ]
             },
             {
+                "priority": 3,
                 "aggregation_set_name": "high",
                 "conditions": [
                     {
@@ -799,6 +810,7 @@
                 ]
             },
             {
+                "priority": 3,
                 "aggregation_set_name": "very_high",
                 "conditions": [
                     {
