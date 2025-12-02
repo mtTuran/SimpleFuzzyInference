@@ -1,8 +1,15 @@
 class FuzzyVariable:
+
+    variables = dict()
+
     def __init__(self, var_name, x_range):
         self.var_name = var_name
         self.x_range = x_range
         self.membership_sets = []
+        FuzzyVariable.variables[var_name] = self
+
+    def get_name(self):
+        return self.var_name
 
     def add_trapezoid_membership_set(self, set_name, set_min_x, set_max_x, set_flatness_start_x, set_flatness_end_x):
         if set_min_x < self.x_range[0] or set_max_x > self.x_range[1]:
@@ -46,4 +53,8 @@ class FuzzyVariable:
         for set_name, mem_func in self.membership_sets:
             crisp_to_membership[set_name] = mem_func(crisp_input)
         return crisp_to_membership
+    
+    @staticmethod
+    def get_variable_by_name(var_name):
+        return FuzzyVariable.variables.get(var_name, None)
     
