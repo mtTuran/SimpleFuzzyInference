@@ -24,8 +24,10 @@ class InferenceEngine:
         for var_name, var_arg in args_dict.items():
             var = self.input_vars.get(var_name, None)
             if var is None:
-                print("An argument for a non-existing input variable was provided!")
+                print(f"An argument for a non-existing input variable '{var_name}' was provided!")
                 return None
+            if var_arg is None:
+                continue
             var.fuzzify(var_arg)
 
         # appyly, aggregate, defuzzify rules ordered by first rule type and rule priority

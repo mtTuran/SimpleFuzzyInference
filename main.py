@@ -1,63 +1,110 @@
 import json
 from InferenceEngine import InferenceEngine
+import pandas as pd
 
 if __name__ == '__main__':
-    '''
-    test_input_var = FuzzyInputVariable("test_input_var", (0, 30))
-    test_input_var.add_trapezoid_membership_set("kucuk", 0, 20, 5, 12)
-    test_input_var.add_triangular_membership_set("orta", 17, 22, 30)
-    test_input_var.fuzzify(18)
-    print(test_input_var.get_memberships())
-    print()
-    
-    test_out_var = FuzzyOutputVariable("test_output_var", (0, 100))
-    test_out_var.add_trapezoid_membership_set("kucuk", 0, 30, 0, 20)
-    test_out_var.add_trapezoid_membership_set("orta", 25, 65, 30, 60)
-    test_out_var.add_trapezoid_membership_set("buyuk", 60, 100, 70, 100)
-
-    test_out_var.clip_membership_set("kucuk", 0.1)
-    test_out_var.clip_membership_set("orta", 0.2)
-    test_out_var.clip_membership_set("buyuk", 0.5)
-
-    test_out_var.aggregate_outputs()
-    result = test_out_var.defuzzify()
-    print(result)
-    print()
-
-    test_out_var.clean_aggregated_memberships()
-    test_out_var.clean_clip_levels()
-
-    rule = FuzzyRule(test_out_var.get_name(), "kucuk")
-    rule.add_condition(test_input_var.get_name(), "kucuk")
-    rule.add_condition(test_input_var.get_name(), "orta")
-    var_name, set_name = rule.get_aggregation_information()
-    clip_level = rule()
-    print(f"{var_name} -> {set_name}'s clip level is: {clip_level}")
-    '''
 
     config_path = "FuzzySystemDefinition.json"
     with open(config_path) as f:
         json_dict = json.load(f)
-    
     engine = InferenceEngine(json_dict)
 
-    arg_dict_1 = {
-        "market_value": 150,
-        "location": 3.1,
-        "assets": 250,
-        "salary": 35,
-        "interest_rate": 5
-    }
+    test_cases = [
+        {
+            "market_value": 950,
+            "location": 9.5,
+            "assets": 900,
+            "salary": 95,
+            "interest_rate": 1.5
+        },
 
-    arg_dict_2 = {
-        "market_value": 830,
-        "location": 8,
-        "assets":800,
-        "salary": 70,
-        "interest_rate": 5
-    }
+        {
+            "market_value": 150,
+            "location": 2.0,
+            "assets": 50,
+            "salary": 15,
+            "interest_rate": 8.5
+        },
 
-    print(engine(arg_dict_1))
-    print()
-    print(engine(arg_dict_2))
+        {
+            "market_value": 500,
+            "location": 5.0,
+            "assets": 500,
+            "salary": 50,
+            "interest_rate": 5.0
+        },
+
+        {
+            "market_value": 800,
+            "location": 8.0,
+            "assets": 100,
+            "salary": 30,
+            "interest_rate": 4.0
+        },
+
+        {
+            "market_value": 250,
+            "location": 3.5,
+            "assets": 850,
+            "salary": 80,
+            "interest_rate": 2.5
+        },
+
+        {
+            "market_value": 600,
+            "location": 7.0,
+            "assets": 50,
+            "salary": 90,
+            "interest_rate": 4.5
+        },
+
+        {
+            "market_value": 700,
+            "location": 6.0,
+            "assets": 950,
+            "salary": 20,
+            "interest_rate": 3.0
+        },
+
+        {
+            "market_value": 400,
+            "location": 9.0,
+            "assets": 400,
+            "salary": None,  
+            "interest_rate": 6.0
+        },
+
+        {
+            "market_value": 900,    # since the rules are not exhaustive, when market value or location information is missing
+            "location": None,       # the rules fire in a way that the house evaluation is equal to 0 even if the market value
+            "assets": 600,          # or location is actually good.
+            "salary": 60,
+            "interest_rate": 5.5
+        },
+
+        {
+            "market_value": None, 
+            "location": 4.0,
+            "assets": 200,
+            "salary": 85,
+            "interest_rate": None 
+        },
+
+        {
+            "market_value": None,       
+            "location": None,
+            "assets": 200,
+            "salary": 85,
+            "interest_rate": None 
+        }
+    ]
+
+    results = []
+    for case in test_cases:
+        case_result = engine(case)
+        merged_inp_out = case.copy()
+        merged_inp_out.update(case_result)
+        results.append(merged_inp_out)
     
+    df = pd.DataFrame(results)
+    print(df)

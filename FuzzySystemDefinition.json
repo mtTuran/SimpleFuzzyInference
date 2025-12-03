@@ -504,7 +504,7 @@
                 ]
             },
             {
-                "aggregation_set_name": "very_high",
+                "aggregation_set_name": "high",
                 "conditions": [
                     {
                         "input_variable_name": "assets",
