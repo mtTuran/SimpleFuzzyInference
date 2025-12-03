@@ -280,6 +280,7 @@
     ],
 
     "HouseRules": {
+        "priority": 3,
         "output_variable_name": "eval_house",
         "Rules": [
             {
@@ -383,7 +384,7 @@
                 "conditions": [
                     {
                        "input_variable_name": "location",
-                        "monotonic_selection_set_name": "medium" 
+                        "monotonic_selection_set_name": "fair" 
                     },
                     {
                         "input_variable_name": "market_value",
@@ -460,6 +461,7 @@
     },
 
     "ApplicationRules": {
+        "priority": 2,
         "output_variable_name": "eval_applicant",
         "Rules": [
             {
@@ -622,6 +624,7 @@
     },
 
     "LoanRules": {
+        "priority": 1,
         "output_variable_name": "loan_amount",
         "Rules": [
             {

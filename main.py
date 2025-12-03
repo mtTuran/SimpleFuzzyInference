@@ -1,11 +1,7 @@
-from FuzzyInputVariable import FuzzyInputVariable
-from FuzzyOutputVariable import FuzzyOutputVariable
-from FuzzyRule import FuzzyRule
 import json
-from FuzzyJsonParserFunctions import parse_input_vars, parse_output_vars, parse_rules
+from InferenceEngine import InferenceEngine
 
 if __name__ == '__main__':
-    
     '''
     test_input_var = FuzzyInputVariable("test_input_var", (0, 30))
     test_input_var.add_trapezoid_membership_set("kucuk", 0, 20, 5, 12)
@@ -42,14 +38,26 @@ if __name__ == '__main__':
     config_path = "FuzzySystemDefinition.json"
     with open(config_path) as f:
         json_dict = json.load(f)
-    print(len(json_dict))
-    print()
+    
+    engine = InferenceEngine(json_dict)
 
-    input_vars = parse_input_vars(json_dict)
-    output_vars = parse_output_vars(json_dict)
-    rules = parse_rules(json_dict)
+    arg_dict_1 = {
+        "market_value": 150,
+        "location": 3.1,
+        "assets": 250,
+        "salary": 35,
+        "interest_rate": 5
+    }
 
-    print(len(input_vars), len(output_vars), len(rules))
+    arg_dict_2 = {
+        "market_value": 830,
+        "location": 8,
+        "assets":800,
+        "salary": 70,
+        "interest_rate": 5
+    }
+
+    print(engine(arg_dict_1))
     print()
-    print(len(rules["HouseRules"]), len(rules["ApplicationRules"]), len(rules["LoanRules"]))
+    print(engine(arg_dict_2))
     

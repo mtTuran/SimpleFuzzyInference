@@ -14,15 +14,19 @@ class FuzzyInputVariable(FuzzyVariable):
             return
         for set_name, membership in crisp_to_membership.items():
             self.memberships[set_name] = membership
-        return self.get_memberships()
         
     def get_memberships(self):
-        if len(self.memberships) == 0:
-            print("No fuzzified input available!")
+        if not self.is_applicable():
+            print("No fuzzification is performed!")
             return None
         return self.memberships
     
     def clean_memberships(self):
         self.memberships.clear()
+
+    def is_applicable(self):
+        if len(self.memberships) == 0:
+            return False
+        return True
 
         

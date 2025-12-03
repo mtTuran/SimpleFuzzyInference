@@ -30,16 +30,13 @@ def parse_vars_util(json_dict, variable_type):
 
     return all_vars
  
-
 def parse_input_vars(json_dict):
     all_input_vars = parse_vars_util(json_dict, "InputSets")
     return all_input_vars
 
-
 def parse_output_vars(json_dict):
     all_output_vars = parse_vars_util(json_dict, "OutputSets")
     return all_output_vars
-
 
 def parse_rules_util(json_dict, rule_type):
     new_rules_list = []
@@ -60,10 +57,17 @@ def parse_rules_util(json_dict, rule_type):
 
     return new_rules_list
 
-
 def parse_rules(json_dict):
     all_rules = dict()
-    all_rules["HouseRules"] = parse_rules_util(json_dict, "HouseRules")
-    all_rules["ApplicationRules"] = parse_rules_util(json_dict, "ApplicationRules")
-    all_rules["LoanRules"] = parse_rules_util(json_dict, "LoanRules")
+    rule_types = [key for key, _ in json_dict.items() if key.endswith("Rules")]
+    for type in rule_types:
+        all_rules[type] = parse_rules_util(json_dict, type) 
     return all_rules
+
+def sort_rule_types_by_priority_util(json_dict, all_rules):
+    ordered_rule_types = sorted(all_rules, reverse=True, key=lambda name: json_dict[name]["priority"])
+    return ordered_rule_types
+
+def sort_output_vars_by_rule_types_util(json_dict, rule_types):
+    ordered_output_vars = [json_dict[type]["output_variable_name"] for type in rule_types]
+    return ordered_output_vars

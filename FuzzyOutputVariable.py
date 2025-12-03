@@ -15,7 +15,7 @@ class FuzzyOutputVariable(FuzzyVariable):
         self.membership_clips[set_name] = 0
 
     def clip_membership_set(self, set_name, clip_level):
-        self.membership_clips[set_name] = clip_level
+        self.membership_clips[set_name] = max(clip_level, self.membership_clips.get(set_name, 0))
 
     def aggregate_outputs(self):
         for x in range(self.x_range[0], self.x_range[1] + 1, 1):
