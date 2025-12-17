@@ -36,10 +36,10 @@ class FuzzyRule:
             if var is None:
                 print(f"A non-existing condition variable has been provided: {var_name}")
                 exit(-1)
-            memberships = var.get_memberships()
-            if memberships is None:
+            if not var.is_applicable():
                 print(f"Input for the {var_name} variable was not fuzzified!")
                 exit(-1)
+            memberships = var.get_memberships()
             condition_selection = memberships.get(selection_set, None)
             if condition_selection is None:
                 print(f"Provided '{selection_set}' set has not been created for the variable '{var_name}'!")

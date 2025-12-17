@@ -66,7 +66,8 @@ class InferenceEngine:
                     derived_variable.add_trapezoid_membership_set(*params)
                 else:
                     derived_variable.add_triangular_membership_set(*params)
-            derived_variable.fuzzify(crisp_result)
+            if crisp_result is not None:
+                derived_variable.fuzzify(crisp_result)
         return crisp_result
 
     def clean_old_computations(self):

@@ -29,10 +29,12 @@ class FuzzyOutputVariable(FuzzyVariable):
             print("Rule evaluations are not aggregated!")
             return None
         nominator = 0
-        denominator = 0.000001
+        denominator = 0
         for membership, x in zip(*[self.aggregated_memberships, range(self.x_range[0], self.x_range[1] + 1, 1)]):
             nominator = nominator + (membership * x)
             denominator = denominator + membership
+        if denominator == 0:
+            return None
         center_of_gravity = nominator / denominator
         return center_of_gravity
 
