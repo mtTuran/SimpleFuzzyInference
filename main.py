@@ -100,11 +100,20 @@ if __name__ == '__main__':
     ]
 
     results = []
-    for case in test_cases:
+    for i, case in enumerate(test_cases):
         case_result = engine(case)
         merged_inp_out = case.copy()
         merged_inp_out.update(case_result)
         results.append(merged_inp_out)
+
+        print(f"\n--- TEST CASE {i+1} ---")
+        print(f"Inputs: {case}")
+        print(f"Results: {case_result}")
+        print("Fired Rule Chain:")
+        
+        trace = engine.get_execution_trace()
+        for entry in trace:
+            print(f"  [{entry['rule_type']}] Strength: {entry['strength']} | {entry['logic']}")
     
     df = pd.DataFrame(results)
     print(df)

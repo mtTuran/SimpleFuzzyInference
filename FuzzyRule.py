@@ -46,3 +46,7 @@ class FuzzyRule:
                 exit(-1)
             min_eval = min(min_eval, condition_selection)
         return min_eval
+    
+    def __str__(self):
+        if_part = " AND ".join([f"{var} IS {s_set}" for var, s_set in self.conditions.items()])
+        return f"IF {if_part} THEN {self.output_variable_name} IS {self.aggregation_set_name}"

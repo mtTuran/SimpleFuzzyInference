@@ -6,6 +6,7 @@ class InferenceEngine:
         self.input_vars = parse_input_vars(json_dict)
         self.output_vars = parse_output_vars(json_dict)
         self.rules = parse_rules(json_dict)
+        self.execution_trace = []
 
         for var_name, out_var in self.output_vars.items():
             derived_variable = FuzzyInputVariable("computed_" + var_name, out_var.get_range())
@@ -34,7 +35,8 @@ class InferenceEngine:
         for rule_type, out_var_name in zip(self.ordered_rule_type_names, self.ordered_output_var_names):
             applicable_rules = self.get_applicable_rules_by_priority(rule_type)
             if len(applicable_rules) != 0:
-                self.apply_rules(rule_type, applicable_rules)
+                fired_rules = self.apply_rules(rule_type, applicable_rules)
+                self.execution_trace.extend(fired_rules)
                 crisp_result = self.aggregate_and_defuzzify(out_var_name, derive=True)
             else:
                 crisp_result = None
@@ -47,12 +49,22 @@ class InferenceEngine:
         return applicable_rules
 
     def apply_rules(self, rule_type, applicable_rules):
+        fired_in_this_step = []
         for rule_index in applicable_rules:
             rule = self.rules[rule_type][rule_index]
             clip_level = rule()
-            out_var_name, out_agg_name = rule.get_aggregation_information()
-            out_var = self.output_vars[out_var_name]
-            out_var.clip_membership_set(out_agg_name, clip_level)
+            
+            if clip_level > 0:
+                out_var_name, out_agg_name = rule.get_aggregation_information()
+                out_var = self.output_vars[out_var_name]
+                out_var.clip_membership_set(out_agg_name, clip_level)
+                
+                fired_in_this_step.append({
+                    "rule_type": rule_type,
+                    "logic": str(rule),
+                    "strength": round(clip_level, 4)
+                })
+        return fired_in_this_step
 
     def aggregate_and_defuzzify(self, output_var_name, derive=True):
         var = self.output_vars[output_var_name]
@@ -76,5 +88,9 @@ class InferenceEngine:
         for _, var in self.output_vars.items():
             var.clean_aggregated_memberships()
             var.clean_clip_levels()
+        self.execution_trace = []
+
+    def get_execution_trace(self):
+        return self.execution_trace
 
         
