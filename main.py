@@ -76,7 +76,7 @@ if __name__ == '__main__':
 
         {
             "market_value": 900,    # since the rules are not exhaustive, when market value or location information is missing
-            "location": None,       # the rules fire in a way that the house evaluation is equal to 0 even if the market value
+            "location": None,       # the rules DON'T fire in a way that the house evaluation is equal to NaN even if the market value
             "assets": 600,          # or location is actually good.
             "salary": 60,
             "interest_rate": 5.5
